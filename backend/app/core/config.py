@@ -27,6 +27,10 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
     ALGORITHM: str = "HS256"
 
+    # CORS
+    FRONTEND_URL: str = "http://localhost:5173"
+    CORS_ORIGINS: str = ""  # Comma-separated extra origins
+
     # File storage
     UPLOAD_DIR: str = "./uploads"
     MAX_UPLOAD_SIZE_MB: int = 100
