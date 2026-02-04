@@ -1,6 +1,5 @@
 import uuid
 
-from geoalchemy2 import Geometry
 from sqlalchemy import Boolean, Float, ForeignKey, Integer, String
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -40,7 +39,7 @@ class StratificationResult(Base, UUIDMixin, TimestampMixin):
     admin_unit_code: Mapped[str | None] = mapped_column(String(50))
     metric_value: Mapped[float] = mapped_column(Float, nullable=False)
     risk_level: Mapped[str] = mapped_column(String(20), nullable=False)
-    geometry = mapped_column(Geometry("MULTIPOLYGON", srid=4326), nullable=True)
+    geometry: Mapped[dict | None] = mapped_column(JSONB, nullable=True)  # GeoJSON stored as JSON
     eligible_interventions: Mapped[dict | None] = mapped_column(JSONB)
     population: Mapped[int | None] = mapped_column(Integer)
     cases_annual: Mapped[int | None] = mapped_column(Integer)

@@ -1,7 +1,6 @@
-import json
 import uuid
 
-from sqlalchemy import delete, func, select
+from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.enums import RiskLevel, StratificationMetric
@@ -162,14 +161,10 @@ class StratificationService:
 
         features = []
         for r in results:
-            # Get geometry as GeoJSON if PostGIS geometry exists
+            # Get geometry from stored GeoJSON
             geometry = None
             if r.geometry is not None:
-                geojson_str = await self.db.scalar(
-                    func.ST_AsGeoJSON(r.geometry)
-                )
-                if geojson_str:
-                    geometry = GeoJSONGeometry(**json.loads(geojson_str))
+                geometry = GeoJSONGeometry(**r.geometry)
 
             interventions = None
             if r.eligible_interventions:
