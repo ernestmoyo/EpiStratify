@@ -10,8 +10,7 @@
     "
   >
     <div style="display: flex; align-items: center; gap: 12px">
-      <h2 style="margin: 0; font-size: 18px; color: #1677ff">EpiStratify</h2>
-      <a-tag color="blue">SNT Toolkit</a-tag>
+      <h2 style="margin: 0; font-size: 18px; color: #1677ff">EpiStratify SNT Toolkit</h2>
     </div>
 
     <div style="display: flex; align-items: center; gap: 16px">

@@ -11,7 +11,7 @@
     <a-card style="width: 440px">
       <div style="text-align: center; margin-bottom: 24px">
         <h1 style="font-size: 24px; color: #1677ff">Create Account</h1>
-        <p style="color: #8c8c8c">Join the SNT Planning Toolkit</p>
+        <p style="color: #8c8c8c">Join EpiStratify SNT Toolkit</p>
       </div>
 
       <a-form :model="form" layout="vertical" @finish="handleRegister">

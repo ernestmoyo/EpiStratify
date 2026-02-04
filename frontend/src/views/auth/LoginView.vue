@@ -10,8 +10,8 @@
   >
     <a-card style="width: 400px">
       <div style="text-align: center; margin-bottom: 24px">
-        <h1 style="font-size: 24px; color: #1677ff">EpiStratify</h1>
-        <p style="color: #8c8c8c">SNT Planning Toolkit</p>
+        <h1 style="font-size: 24px; color: #1677ff">EpiStratify SNT Toolkit</h1>
+        <p style="color: #8c8c8c">Subnational Tailoring Planning Toolkit</p>
       </div>
 
       <a-form
