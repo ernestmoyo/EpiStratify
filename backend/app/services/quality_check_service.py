@@ -211,9 +211,13 @@ class QualityCheckService:
             iqr = q3 - q1
 
             if iqr == 0:
-                continue
-
-            outlier_mask = (df[col] < (q1 - 3 * iqr)) | (df[col] > (q3 + 3 * iqr))
+                # Fallback: flag values that differ from the median
+                median = df[col].median()
+                if df[col].std() == 0:
+                    continue
+                outlier_mask = df[col] != median
+            else:
+                outlier_mask = (df[col] < (q1 - 3 * iqr)) | (df[col] > (q3 + 3 * iqr))
             outlier_count = int(outlier_mask.sum())
 
             if outlier_count > 0:

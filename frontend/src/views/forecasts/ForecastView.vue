@@ -119,16 +119,16 @@
         <h4>Uncertainty Bounds</h4>
         <a-descriptions :column="2" size="small" bordered>
           <a-descriptions-item label="Cases Averted (Lower)">
-            {{ forecastStore.currentForecast.uncertainty_bounds.cases_averted?.lower?.toLocaleString() }}
+            {{ (forecastStore.currentForecast.uncertainty_bounds as any)?.cases_averted?.lower?.toLocaleString() }}
           </a-descriptions-item>
           <a-descriptions-item label="Cases Averted (Upper)">
-            {{ forecastStore.currentForecast.uncertainty_bounds.cases_averted?.upper?.toLocaleString() }}
+            {{ (forecastStore.currentForecast.uncertainty_bounds as any)?.cases_averted?.upper?.toLocaleString() }}
           </a-descriptions-item>
           <a-descriptions-item label="Deaths Averted (Lower)">
-            {{ forecastStore.currentForecast.uncertainty_bounds.deaths_averted?.lower?.toLocaleString() }}
+            {{ (forecastStore.currentForecast.uncertainty_bounds as any)?.deaths_averted?.lower?.toLocaleString() }}
           </a-descriptions-item>
           <a-descriptions-item label="Deaths Averted (Upper)">
-            {{ forecastStore.currentForecast.uncertainty_bounds.deaths_averted?.upper?.toLocaleString() }}
+            {{ (forecastStore.currentForecast.uncertainty_bounds as any)?.deaths_averted?.upper?.toLocaleString() }}
           </a-descriptions-item>
         </a-descriptions>
       </div>
