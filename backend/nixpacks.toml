@@ -1,5 +1,0 @@
-[phases.setup]
-nixPkgs = ["...", "gdal"]
-
-[phases.install]
-cmds = ["pip install -r requirements/base.txt"]
