@@ -20,13 +20,17 @@ async def lifespan(app: FastAPI):
     # Startup: create extensions and tables if they don't exist
     from sqlalchemy import text
 
-    async with engine.begin() as conn:
-        try:
+    # Try to create extensions in a separate transaction (ok if it fails)
+    try:
+        async with engine.begin() as conn:
             await conn.execute(text('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"'))
             await conn.execute(text("CREATE EXTENSION IF NOT EXISTS postgis"))
-            logger.info("PostgreSQL extensions verified")
-        except Exception as e:
-            logger.warning("Could not create extensions (PostGIS may not be available): %s", e)
+        logger.info("PostgreSQL extensions verified")
+    except Exception as e:
+        logger.warning("Could not create extensions (PostGIS may not be available): %s", e)
+
+    # Create tables in a clean transaction
+    async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     logger.info("Database tables verified/created")
     yield
